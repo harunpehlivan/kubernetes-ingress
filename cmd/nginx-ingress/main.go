@@ -109,9 +109,8 @@ func main() {
 	flag.Parse()
 
 	err := flag.Lookup("logtostderr").Value.Set("true")
-
 	if err != nil {
-		fmt.Printf("Error setting logtostderr to true: %v", err)
+		fmt.Failf("Error setting logtostderr to true: %v", err)
 	}
 
 	if *versionFlag {

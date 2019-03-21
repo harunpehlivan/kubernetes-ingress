@@ -46,9 +46,8 @@ func runServer(port string, registry prometheus.Gatherer) {
 			<p><a href='/metrics'>Metrics</a></p>
 			</body>
 			</html>`))
-
 		if err != nil {
-			glog.Warningf("Error while creating the Http Handler response: %v", err)
+			glog.Warningf("Error while sending a response for the '/' path: %v", err)
 		}
 	})
 	address := fmt.Sprintf(":%v", port)
