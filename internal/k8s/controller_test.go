@@ -644,27 +644,6 @@ func getMergableDefaults() (cafeMaster, coffeeMinion, teaMinion extensions.Ingre
 	lbc.ingressLister.Store, _ = cache.NewInformer(
 		cache.NewListWatchFromClient(lbc.client.ExtensionsV1beta1().RESTClient(), "ingresses", "default", fields.Everything()),
 		&extensions.Ingress{}, time.Duration(1), nil)
-	coffeeService := v1.Service{
-		TypeMeta: meta_v1.TypeMeta{},
-		ObjectMeta: meta_v1.ObjectMeta{
-			Name:      "coffee-svc",
-			Namespace: "default",
-		},
-		Spec:   v1.ServiceSpec{},
-		Status: v1.ServiceStatus{},
-	}
-	teaService := v1.Service{
-		TypeMeta: meta_v1.TypeMeta{},
-		ObjectMeta: meta_v1.ObjectMeta{
-			Name:      "coffee-svc",
-			Namespace: "default",
-		},
-		Spec:   v1.ServiceSpec{},
-		Status: v1.ServiceStatus{},
-	}
-
-	_ = lbc.svcLister.Add(coffeeService)
-	_ = lbc.svcLister.Add(teaService)
 
 	return
 }
